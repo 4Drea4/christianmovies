@@ -2,6 +2,8 @@ let right_btn = document.getElementsByClassName('bi-arrow-right-circle-fill')[0]
 let left_btn = document.getElementsByClassName('bi-arrow-left-circle-fill')[0];
 let cards = document.getElementsByClassName('cards')[0];
 let search = document.getElementsByClassName('search')[0];
+let search_input = document.getElementById('search_input');
+
 
 
 left_btn.addEventListener('click', ()=> {
@@ -34,7 +36,7 @@ right_btn.addEventListener('click', ()=> {
                                 <h3><span>IMDB</span><i class="bi bi-star-fill">${imdb}</i></h3>
                             </div>
                         </div>
-                    </div>`;
+                    </div>`
         cards.appendChild(card);
 
 
@@ -59,10 +61,101 @@ right_btn.addEventListener('click', ()=> {
                         </div>
                         `
         search.appendChild(card);
+    });
     //filter searches
+        search_input.addEventListener('keyup', () => {
+            let filter = search_input.value.toUpperCase();
+            let a = search.getElementsByTagName('a');
 
+            for (let index = 0; index < a.length; index++ ) {
+                let b = a[index].getElementsByClassName('cont')[0];
+                //console.log(a.textContent)
+                let TextValue = b.textContent || b.innerText;
+                if (TextValue.toUpperCase().indexOf(filter) > -1) {
+                        a[index].style.display = "flex";
+                        search.style.visibility = "visible";
+                        search.style.opacity = 1;
+
+                }else {
+                    a[index].style.display = "none";
+                }
+                if (search_input.value == 0 ) {
+                    search.style.visibility = "hidden";
+                    search.style.opacity = 0;
+
+                }
+            }
+        })
+
+        let video = document.getElementsByTagName('video')[0];
+        let play = document.getElementById('play');
+    play.addEventListener('click', ()=> {
+        if (video.paused) {
+            video.play();
+            play.innerHTML = `Play <i class = "bi bi-pause-fill"></i>`
+        } else {
+            video.pause();
+            play.innerHTML = `Watch <i class = "bi bi-play-fill"></i>`
+        }
+    })
+
+    let series = document.getElementById('series');
+    let movies = document.getElementById('movies');
+
+series.addEventListener('click', () => {
+    cards.innerHTML = ''; // Fixed: added the dot
+
+    let series_array = data.filter((ele) => {
+        return ele.type === "series";
     });
 
+    series_array.forEach((ele, i) => {
+        let { name, imdb, date, sposter, bposter, genre, url } = ele;
+        let card = document.createElement('a');
+        card.classList.add('card');
+        card.href = url;
+        card.innerHTML = `
+            <img src="${sposter}" alt="${name}" class="poster">
+            <div class="rest_card">
+                <img src="${bposter}" alt="">
+                <div class="cont">
+                    <h4>${name}</h4> 
+                    <div class="sub">
+                        <p>${genre}, ${date}</p>
+                        <h3><span>IMDB</span><i class="bi bi-star-fill">${imdb}</i></h3>
+                    </div>
+                </div>
+            </div>`;
+        cards.appendChild(card);
+    });
+})
+movies.addEventListener('click', () => {
+    cards.innerHTML = ''; // Fixed: added the dot
+
+    let movie_array = data.filter((ele) => {
+        return ele.type === "movie";
+    });
+
+    movie_array.forEach((ele, i) => {
+        let { name, imdb, date, sposter, bposter, genre, url } = ele;
+        let card = document.createElement('a');
+        card.classList.add('card');
+        card.href = url;
+        card.innerHTML = `
+            <img src="${sposter}" alt="${name}" class="poster">
+            <div class="rest_card">
+                <img src="${bposter}" alt="">
+                <div class="cont">
+                    <h4>${name}</h4> 
+                    <div class="sub">
+                        <p>${genre}, ${date}</p>
+                        <h3><span>IMDB</span><i class="bi bi-star-fill">${imdb}</i></h3>
+                    </div>
+                </div>
+            </div>`;
+        cards.appendChild(card);
+    });
+});
 
 
 });

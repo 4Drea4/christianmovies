@@ -1,4 +1,19 @@
+
+
 [{
+    "name": "Homestead",
+    "imdb": 8.2,
+    "date": "2024",
+    "sposter": "img/Homestead 1.png",
+    "bposter": "img/homestead expanded.jpeg",
+    "genre": "Drama",
+    "type": "movie",
+    "url": "homestead.html",
+    "trailer": "homestead_trailer.mp4",
+    "low": "video/homestead_480ph.mp4",
+    "medium": "video/homestead_720ph.mp4",
+    "high": "video/homestead_1080ph.mp4"
+},{
     "name": "The Chosen",
     "imdb": 9.5,
     "date": "2017",
@@ -129,18 +144,19 @@
     "medium": "video/heaven_is_for_real_720ph.mp4",
     "high": "video/heaven_is_for_real_1080ph.mp4"
 },{
-    "name": "Homestead",
-    "imdb": 8.2,
-    "date": "2024",
-    "sposter": "img/Homestead 1.png",
-    "bposter": "img/homestead expanded.jpeg",
+    "name": "Noah",
+    "imdb": 5.8,
+    "date": "2014",
+    "sposter": "img/noah.png",
+    "bposter": "img/noahexpanded.png",
     "genre": "Drama",
     "type": "movie",
-    "url": "homestead.html",
-    "trailer": "homestead_trailer.mp4",
-    "low": "video/homestead_480ph.mp4",
-    "medium": "video/homestead_720ph.mp4",
-    "high": "video/homestead_1080ph.mp4"
+    "url": "noah.html",
+    "trailer": "noah_trailer.mp4",
+    "low": "video/noah_480ph.mp4",
+    "medium": "video/noah_720ph.mp4",
+    "high": "video/noah_1080ph.mp4"
 }]
+
 
 

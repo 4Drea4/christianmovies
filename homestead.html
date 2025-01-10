@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="img/icon.png" type="image/x-ico">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <title>Movies</title>
+        <title>Homestead | Movies </title>
     </head>
 
     <body>
@@ -62,9 +60,10 @@
                 <h3 id="rate"><span>IMDB</span><i class="bi bi-star-fill"></i>5.7</h3>
             </div>
             <div class="btns">
-                <a href="#" id="play">Watch <i class="bi bi-play-circle-fill"></i></a>
-                <a href="#" id="download_main"><i class="bi bi-cloud-download"></i></a>
-
+              <a href="#" id="play">Watch <i class="bi bi-play-circle-fill"></i></a>
+              <a href="#" download=" Homestead 480" id="low_q">480</a>
+              <a href="#" download=" Homestead 720"  id="med_q">720</a>
+              <a href="#" download=" Homestead 1080" id="high_q">1080</a>
             </div>
         </div>
         <section>
@@ -90,5 +89,24 @@
         </section>
         </header>
         <script src="app.js"></script>
+        <script>
+            fetch(json_url).then((response) =>  response.json())
+            .then(data => {
+                let movie_array = data.filter((ele) => {
+                return ele.name === "Homestead";
+  });      
+    document.getElementById('title').innerText = movie_array[0].name;
+    document.getElementByTagName('video')[0].setAttribute('src', movie_array[0].trailer);
+    document.getElementByTagName('video')[0].play; 
+    document.getElementById('low_q').href =  movie_array[0].low;
+    document.getElementById('med_q').href =  movie_array[0].medium;
+    document.getElementById('high_q').href =  movie_array[0].high;
+    document.getElementById('gen').innerText =  movie_array.genre;
+    document.getElementById('date').innerText =  movie_array[0].data;
+    document.getElementById('rate').innerHTML = `<span>IMDB</span><i class="bi bi-star-fill"></i>${data[0].imdb}</h3>`
+
+  
+            })
+        </script>
     </body>
 </html>
